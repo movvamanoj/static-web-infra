@@ -1,7 +1,7 @@
 resource "aws_security_group" "allow_all" {
   name        = "allow-all-traffic-308"
   description = "Allow all inbound and outbound traffic"
-  vpc_id      = var.vpc_id  # Replace with your VPC ID
+  vpc_id      = var.vpc_id 
 
 # Rule allowing all inbound traffic on all ports
 ingress {

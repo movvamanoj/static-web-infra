@@ -8,16 +8,14 @@ resource "aws_iam_instance_profile" "ec2_instance_profile" {
 resource "aws_instance" "ec2_instance" {
   # Determine if the EC2 should be created based on the instance count.
   count            = var.instance_count > 0 ? var.instance_count : 0
- 
   # AMI and instance type for the EC2 instance.
   ami           = var.ec2_ami 
   instance_type = var.instance_type 
- 
   # Subnet, key name, security groups, and IAM instance profile.
   subnet_id     = var.public_subnet[0]
   key_name      = var.key_name
   security_groups = var.security_groups
-  iam_instance_profile = module.iam.static_website_role.name
+  iam_instance_profile = aws_iam_instance_profile.ec2_instance_profile.name
  
   # User data script for customization on instance launch.
   user_data = <<-EOF
