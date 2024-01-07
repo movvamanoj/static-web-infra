@@ -364,3 +364,18 @@ variable "az_count" {
   description = "Number of Availability Zones in the region"
   type        = number
 }
+
+variable "dynamodb_table_name" {
+  description = "Name of the DynamoDB table"
+  type = string
+}
+
+variable "dynamodb_partition_key" {
+  description = "Partition key for the DynamoDB table"
+  type = string
+}
+
+variable "dynamodb_sort_key" {
+  description = "Sort key for the DynamoDB table"
+  type = string
+}

@@ -51,17 +51,17 @@ module "security_groups" {
 
 module "alb" {
     source = "./modules/Alb"
-    # vpc_id              = module.vpc.vpc_id
-    # aws_instance_ids    = module.ec2_instance.ec2_instance_ids
-    # target_group_arns   = module.target_group.target_group_arns
-    # security_groups     = [module.security_groups.security_group_id]
-    # target_group_count = var.target_group_count
-    # instance_count = var.instance_count
-    # alb_count = var.alb_count
-    # subnet_availability_zones = module.public_subnet.subnet_availability_zones
-    # public_subnet_cidrs_count = var.public_subnet_cidrs_count
-    # public_subnet = module.public_subnet.public_subnet_ids
-    # az_count = length(data.aws_availability_zones.available.names)
+    vpc_id              = module.vpc.vpc_id
+    aws_instance_ids    = module.ec2_instance.ec2_instance_ids
+    target_group_arns   = module.target_group.target_group_arns
+    security_groups     = [module.security_groups.security_group_id]
+    target_group_count = var.target_group_count
+    instance_count = var.instance_count
+    alb_count = var.alb_count
+    subnet_availability_zones = module.public_subnet.subnet_availability_zones
+    public_subnet_cidrs_count = var.public_subnet_cidrs_count
+    public_subnet = module.public_subnet.public_subnet_ids
+    az_count = length(data.aws_availability_zones.available.names)
 }
 
 module "asg" {
@@ -105,11 +105,17 @@ module "iam" {
 }
 
 module "dynamodb_table" {
-    source = "./modules/RDS/Dynamodb"
-  
+  source                 = "./modules/RDS/Dynamodb"
+  dynamodb_table_name    = var.dynamodb_table_name
+  dynamodb_partition_key = var.dynamodb_partition_key
+  dynamodb_sort_key      = var.dynamodb_sort_key
 }
 
 module "s3_bucket" {
-    source = "./modules/s3"
-  
+     source          = "./modules/s3"
+     s3_role_name    = module.iam.s3_role_name
+     s3_policy_arn   = module.iam.s3_policy_arn
+    #  local_files_path = "path/to/local/files"
+    #  github_files     = ["file1.txt", "file2.txt"] 
+     bucket_name      = "test_terra"
 }
