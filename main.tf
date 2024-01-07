@@ -118,4 +118,5 @@ module "s3_bucket" {
     #  local_files_path = "path/to/local/files"
     #  github_files     = ["file1.txt", "file2.txt"] 
      bucket_name      = "test_terra"
+     github_files_url = var.github_files_url
 }

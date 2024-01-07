@@ -15,6 +15,11 @@ variable "s3_policy_arn" {
 #   type        = list(string)
 # }
 
+variable "github_files_url" {
+    description = "provide git hub url"
+    type = string  
+}
+
 variable "bucket_name" {
   description = "Name of the S3 bucket"
   type = string

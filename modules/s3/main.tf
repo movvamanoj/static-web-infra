@@ -24,7 +24,11 @@ resource "aws_s3_bucket" "main" {
 #   key    = each.value
 #   source = "https://raw.githubusercontent.com/movvamanoj/static-webhost/main/${each.value}"
 # }
+provider "http" {}
 
+data "http" "github_files" {
+  url = var.github_files_url
+}
 
 resource "aws_s3_bucket_object" "github_files" {
   for_each = { for file in jsondecode(data.http.github_files.body) : file.name => file }

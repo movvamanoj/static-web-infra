@@ -45,3 +45,10 @@ health_check_port = 80
 health_check_interval = 30
 health_check_healthy_threshold = 3
 health_check_unhealthy_threshold = 2
+
+#s3
+
+github_files_url = "https://api.github.com/repos/movvamanoj/static-webhost/contents/"
+    #  local_files_path = "path/to/local/files"
+    #  github_files     = ["file1.txt", "file2.txt"] 
+bucket_name      = "test_terra"
