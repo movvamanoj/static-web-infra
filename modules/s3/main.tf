@@ -24,18 +24,24 @@ resource "aws_s3_bucket" "main" {
 #   key    = each.value
 #   source = "https://raw.githubusercontent.com/movvamanoj/static-webhost/main/${each.value}"
 # }
-provider "http" {}
+# terraform {
+#   required_providers {
+#     http = {
+#       source = "hashicorp/http"
+#     }
+#   }
+# }
 
-data "http" "github_files" {
-  url = var.github_files_url
-}
+# data "http" "github_files" {
+#   url = var.github_files_url
+# }
 
-resource "aws_s3_bucket_object" "github_files" {
-  for_each = { for file in jsondecode(data.http.github_files.body) : file.name => file }
-  bucket = aws_s3_bucket.main.bucket
-  key    = each.value.name
-  source = each.value.download_url
-}
+# resource "aws_s3_bucket_object" "github_files" {
+#   for_each = { for file in jsondecode(data.http.github_files.body) : file.name => file }
+#   bucket = aws_s3_bucket.main.bucket
+#   key    = each.value.name
+#   source = each.value.download_url
+# }
 
 resource "aws_iam_role_policy_attachment" "s3_attachment" {
   role       = var.s3_role_name

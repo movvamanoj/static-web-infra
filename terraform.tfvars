@@ -31,6 +31,7 @@ public_subnet_name_tag = "Public-Subnet-308-"
   tag_key             = "Environment"  
   tag_value           = "Production"   
   tag_propagate_at_launch = true
+  lifecycle_create_before_destroy = true
 
   #
 public_route_table_tag_name = "Public-Route-Table-staticweb"
@@ -52,3 +53,14 @@ github_files_url = "https://api.github.com/repos/movvamanoj/static-webhost/conte
     #  local_files_path = "path/to/local/files"
     #  github_files     = ["file1.txt", "file2.txt"] 
 bucket_name      = "test_terra"
+
+#dynamodb
+
+
+dynamodb_table_name = "test-web-infra"
+dynamodb_partition_key = "username"
+dynamodb_sort_key = "phone"
+
+#iam
+
+iam_role_name = "static-website-rolename"

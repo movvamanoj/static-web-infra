@@ -4,7 +4,7 @@ resource "aws_launch_configuration" "autoscaling_lc" {
   instance_type = var.instance_type
 
   lifecycle {
-    create_before_destroy = var.lifecycle_create_before_destroy
+    create_before_destroy = true
   }
 }
 
@@ -23,6 +23,6 @@ resource "aws_autoscaling_group" "autoscaling_group" {
   }
 
   lifecycle {
-    create_before_destroy = var.lifecycle_create_before_destroy
+    create_before_destroy = true
   }
 }

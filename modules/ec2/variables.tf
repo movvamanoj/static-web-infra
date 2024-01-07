@@ -1,6 +1,6 @@
-variable "iam_role_name" {
-  description = "IAM role name to associate with the EC2 instance."
-}
+# variable "iam_role_name" {
+#   description = "IAM role name to associate with the EC2 instance."
+# }
 
 # Number of instances to be created.
 variable "instance_count" {
