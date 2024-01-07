@@ -51,17 +51,17 @@ module "security_groups" {
 
 module "alb" {
     source = "./modules/Alb"
-    # vpc_id              = module.vpc.vpc_id
-    # aws_instance_ids    = module.ec2_instance.ec2_instance_ids
-    # target_group_arns   = module.target_group.target_group_arns
-    # security_groups     = [module.security_groups.security_group_id]
-    # target_group_count = var.target_group_count
-    # instance_count = var.instance_count
-    # alb_count = var.alb_count
-    # subnet_availability_zones = module.public_subnet.subnet_availability_zones
-    # public_subnet_cidrs_count = var.public_subnet_cidrs_count
-    # public_subnet = module.public_subnet.public_subnet_ids
-    # az_count = length(data.aws_availability_zones.available.names)
+    vpc_id              = module.vpc.vpc_id
+    aws_instance_ids    = module.ec2_instance.ec2_instance_ids
+    target_group_arns   = module.target_group.target_group_arns
+    security_groups     = [module.security_groups.security_group_id]
+    target_group_count = var.target_group_count
+    instance_count = var.instance_count
+    alb_count = var.alb_count
+    subnet_availability_zones = module.public_subnet.subnet_availability_zones
+    public_subnet_cidrs_count = var.public_subnet_cidrs_count
+    public_subnet = module.public_subnet.public_subnet_ids
+    az_count = length(data.aws_availability_zones.available.names)
 }
 
 module "asg" {
