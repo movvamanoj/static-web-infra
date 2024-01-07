@@ -105,11 +105,18 @@ module "iam" {
 }
 
 module "dynamodb_table" {
-    source = "./modules/RDS/Dynamodb"
-  
+  source                 = "./modules/RDS/Dynamodb"
+  dynamodb_table_name    = var.dynamodb_table_name
+  dynamodb_partition_key = var.dynamodb_partition_key
+  dynamodb_sort_key      = var.dynamodb_sort_key
 }
 
 module "s3_bucket" {
-    source = "./modules/s3"
-  
+     source          = "./modules/s3"
+     s3_role_name    = module.iam.s3_role_name
+     s3_policy_arn   = module.iam.s3_policy_arn
+    #  local_files_path = "path/to/local/files"
+    #  github_files     = ["file1.txt", "file2.txt"] 
+     bucket_name      = "test_terra"
+     github_files_url = var.github_files_url
 }
