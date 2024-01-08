@@ -109,14 +109,16 @@ module "dynamodb_table" {
   dynamodb_table_name    = var.dynamodb_table_name
   dynamodb_partition_key = var.dynamodb_partition_key
   dynamodb_sort_key      = var.dynamodb_sort_key
+  dynamodb_terraform_locks = var.dynamodb_terraform_locks
 }
 
 module "s3_bucket" {
      source          = "./modules/s3"
      s3_role_name    = module.iam.s3_role_name
-     s3_policy_arn   = module.iam.s3_policy_arn
+     s3_role_arn     = module.iam.s3_role_arn
     #  local_files_path = "path/to/local/files"
     #  github_files     = ["file1.txt", "file2.txt"] 
-     bucket_name      = "test_terra"
+     bucket_name      = var.bucket_name
+     s3_bucket_name = var.s3_terraform_state
      github_files_url = var.github_files_url
 }

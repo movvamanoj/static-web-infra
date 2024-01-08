@@ -1,8 +1,9 @@
+
 variable "s3_role_name" {
   description = "IAM role name to attach S3 policy"
 }
 
-variable "s3_policy_arn" {
+variable "s3_role_arn" {
   description = "ARN of the S3 policy to attach"
 }
 
@@ -25,9 +26,13 @@ variable "bucket_name" {
   type = string
 }
 
+variable "s3_bucket_name" {
+  type = string
+  
+}
 variable "acl_public_read" {
-    description = "Public read"
-    default = "public-read"
+    description = "read"
+    default = "private"
     type = string
 
 }

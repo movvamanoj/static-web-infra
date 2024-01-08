@@ -430,3 +430,20 @@ variable "error_document_main" {
     default = "error.html"
     type = string
 }
+
+variable "dynamodb_terraform_locks" {
+  description = "provide terrafrom locks"
+  type = string
+  
+}
+
+variable "terraform_state" {
+  description = "provide state file" 
+}
+variable "terraform_tfstate_key" {
+  description = "terraform tfstate key"
+}
+variable "s3_terraform_state" {
+  description = "terraform state files"
+  type = string
+}

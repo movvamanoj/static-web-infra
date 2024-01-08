@@ -9,3 +9,8 @@ variable "dynamodb_partition_key" {
 variable "dynamodb_sort_key" {
   description = "Sort key for the DynamoDB table"
 }
+
+variable "dynamodb_terraform_locks" {
+  description = "terraform locks in dynamodb"
+  
+}
