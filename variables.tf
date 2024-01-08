@@ -284,3 +284,7 @@ variable "s3_terraform_state" {
   description = "terraform state files"
   type = string
 }
+variable "s3_bucket_name" {
+  description = "we provide s3 bucket name to store terraform state files"
+  
+}

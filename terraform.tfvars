@@ -13,7 +13,7 @@ alb_count = "1"
 
 instance_count = "1"
 instance_type = "t2.micro"
-key_name = "new-trail"
+key_name = "new-"
 ec2_ami = "ami-079db87dc4c10ac91"
 role_name = "static_website_role"
 ig_tag_name = "MyIGW-308"  
@@ -31,7 +31,6 @@ public_subnet_name_tag = "Public-Subnet-308-"
   tag_key             = "Environment"  
   tag_value           = "Production"   
   tag_propagate_at_launch = true
-  lifecycle_create_before_destroy = true
 
   #
 public_route_table_tag_name = "Public-Route-Table-staticweb"
@@ -47,18 +46,18 @@ health_check_interval = 30
 health_check_healthy_threshold = 3
 health_check_unhealthy_threshold = 2
 
+
+
 #s3
 
 github_files_url = "https://api.github.com/repos/movvamanoj/static-webhost/contents/"
     #  local_files_path = "path/to/local/files"
     #  github_files     = ["file1.txt", "file2.txt"] 
-<<<<<<< HEAD
-bucket_name      = "test-terra"
+bucket_name              = "test-terra"
 dynamodb_terraform_locks = "terraform-locks"
 terraform_tfstate_key = "terraform.tfstate"
-s3_terraform_state = "s3-terraform-state-files"
-=======
-bucket_name      = "test_terra"
+s3_terraform_state    = "s3-terraform-state-files"
+s3_bucket_name        = "terr-state-file-backup"
 
 #dynamodb
 
@@ -70,4 +69,3 @@ dynamodb_sort_key = "phone"
 #iam
 
 iam_role_name = "static-website-rolename"
->>>>>>> 16c9a7e58f9483c4cc557af98a4d0466f8e7567b
