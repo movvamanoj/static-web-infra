@@ -15,7 +15,7 @@ module "public_subnet" {
 
 module "ec2_instance" {
     source = "./modules/ec2"
-    iam_role_name = module.iam.static_website_role.name
+    iam_role_name = module.iam.iam_role_name
     vpc_id = module.vpc.vpc_id
     public_subnet = module.public_subnet.public_subnet_ids
     instance_count = var.instance_count

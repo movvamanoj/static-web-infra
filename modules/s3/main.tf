@@ -37,6 +37,7 @@ resource "aws_s3_bucket_object" "github_files" {
 #   key    = each.value
 #   source = "https://raw.githubusercontent.com/movvamanoj/static-webhost/main/${each.value}"
 # }
+<<<<<<< HEAD
 
 resource "aws_s3_bucket_policy" "s3_bucket_policy" {
   bucket = aws_s3_bucket.main.bucket
@@ -55,6 +56,26 @@ resource "aws_s3_bucket_policy" "s3_bucket_policy" {
     ],
   })
 }
+=======
+# terraform {
+#   required_providers {
+#     http = {
+#       source = "hashicorp/http"
+#     }
+#   }
+# }
+
+# data "http" "github_files" {
+#   url = var.github_files_url
+# }
+
+# resource "aws_s3_bucket_object" "github_files" {
+#   for_each = { for file in jsondecode(data.http.github_files.body) : file.name => file }
+#   bucket = aws_s3_bucket.main.bucket
+#   key    = each.value.name
+#   source = each.value.download_url
+# }
+>>>>>>> 16c9a7e58f9483c4cc557af98a4d0466f8e7567b
 
 
 
