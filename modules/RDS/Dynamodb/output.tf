@@ -14,6 +14,6 @@ output "backend_role_name" {
   value = aws_iam_role.terraform_backend_role.name
 }
 
-output "dynamodb_table_name" {
+output "terra_dynamodb_table_name" {
   value = aws_dynamodb_table.terraform_locks_table.name
 }

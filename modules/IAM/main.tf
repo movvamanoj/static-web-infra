@@ -93,48 +93,84 @@ resource "aws_iam_role_policy_attachment" "cloudwatch_attachment" {
   policy_arn = aws_iam_policy.cloudwatch_policy.arn
 }
 
-# S3 IAM Role
+# # S3 IAM Role
+# resource "aws_iam_role" "s3_role" {
+#   name = var.s3_role_name
+
+#   assume_role_policy = <<EOF
+#   {
+#     "Version": "2012-10-17",
+#     "Statement": [
+#       {
+#         "Effect": "Allow",
+#         "Principal": {
+#           "Service": "s3.amazonaws.com"
+#         },
+#         "Action": "sts:AssumeRole"
+#       }
+#     ]
+#   }
+#   EOF
+# }
+# # S3 IAM Role Policy (example)
+# resource "aws_iam_policy" "s3_bucket_policy" {
+#   name        = "s3-bucket-policy"
+#   description = "Policy for S3 access"
+
+#   policy = <<EOF
+#   {
+#     "Version": "2012-10-17",
+#     "Statement": [
+#       {
+#         "Effect": "Allow",
+#         "Action": [
+#           "s3:GetObject"
+#         ],
+#         "Resource": "*"
+#       }
+#     ]
+#   }
+#   EOF
+# }
 resource "aws_iam_role" "s3_role" {
   name = var.s3_role_name
-
   assume_role_policy = <<EOF
-  {
-    "Version": "2012-10-17",
-    "Statement": [
-      {
-        "Effect": "Allow",
-        "Principal": {
-          "Service": "s3.amazonaws.com"
-        },
-        "Action": "sts:AssumeRole"
-      }
-    ]
-  }
-  EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "s3.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
 }
-# S3 IAM Role Policy (example)
-resource "aws_iam_policy" "s3_policy" {
-  name        = "s3_policy"
+EOF
+}
+
+resource "aws_iam_policy" "s3_bucket_policy" {
+  name        = "s3-bucket-policy"
   description = "Policy for S3 access"
-
   policy = <<EOF
-  {
-    "Version": "2012-10-17",
-    "Statement": [
-      {
-        "Effect": "Allow",
-        "Action": [
-          "s3:GetObject"
-        ],
-        "Resource": "*"
-      }
-    ]
-  }
-  EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+EOF
 }
 
-resource "aws_iam_role_policy_attachment" "s3_attachment" {
+resource "aws_iam_role_policy_attachment" "s3_bucket_attachment" {
   role       = aws_iam_role.s3_role.name
-  policy_arn = aws_iam_policy.s3_policy.arn
+  policy_arn = aws_iam_policy.s3_bucket_policy.arn
 }
 

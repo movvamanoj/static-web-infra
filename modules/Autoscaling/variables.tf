@@ -12,11 +12,6 @@ variable "tag_propagate_at_launch" {
   type = bool
 }
 
-variable "lifecycle_create_before_destroy" {
-  description = "Whether to propagate the tag to instances launched in the Auto Scaling Group"
-  type = bool
-}
-
 variable "region" {
   description = "AWS region"
 }

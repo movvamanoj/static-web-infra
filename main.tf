@@ -78,7 +78,6 @@ module "asg" {
     tag_key             = var.key_name
     tag_value           = var.tag_value 
     tag_propagate_at_launch = var.tag_propagate_at_launch
-    lifecycle_create_before_destroy = var.lifecycle_create_before_destroy
 }
 
 module "target_group" {
