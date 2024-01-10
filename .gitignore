@@ -5,11 +5,11 @@
 .terraform/*
 
 # Ignore Terraform state files
-terraform.tfstate
-terraform.tfstate.backup
+# terraform.tfstate
+# terraform.tfstate.backup
 
 # Ignore Terraform lock file
-.terraform.lock.hcl
+# .terraform.lock.hcl
 
 # Ignore Vault variables file
-#vault.tfvars
+vault.tfvars

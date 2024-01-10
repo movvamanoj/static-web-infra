@@ -113,11 +113,13 @@ module "dynamodb_table" {
 
 module "s3_bucket" {
      source          = "./modules/s3"
+     region              = var.region
      s3_role_name    = module.iam.s3_role_name
      s3_role_arn     = module.iam.s3_role_arn
     #  local_files_path = "path/to/local/files"
     #  github_files     = ["file1.txt", "file2.txt"] 
      bucket_name      = var.bucket_name
-     s3_bucket_name = var.s3_terraform_state
+     s3_bucket_name = var.s3_bucket_name
      github_files_url = var.github_files_url
+     alb_dns_name    = module.alb.alb_dns_name[0]
 }

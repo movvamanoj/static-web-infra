@@ -17,32 +17,32 @@ resource "aws_dynamodb_table" "main" {
   }
 }
 
-resource "aws_dynamodb_table" "terraform_locks_table" {
-  name           = var.dynamodb_terraform_locks
-  billing_mode   = "PAY_PER_REQUEST"
-  hash_key       = "LockID"
-  attribute {
-    name = "LockID"
-    type = "S"
-  }
-}
+# resource "aws_dynamodb_table" "terraform_locks_table" {
+#   name           = var.dynamodb_terraform_locks
+#   billing_mode   = "PAY_PER_REQUEST"
+#   hash_key       = "LockID"
+#   attribute {
+#     name = "LockID"
+#     type = "S"
+#   }
+# }
 
-resource "aws_iam_role" "terraform_backend_role" {
-  name = "terraform-backend-role"
+# resource "aws_iam_role" "terraform_backend_role" {
+#   name = "terraform-backend-role"
   
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": "s3.amazonaws.com"
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}
-EOF
-}
+#   assume_role_policy = <<EOF
+# {
+#   "Version": "2012-10-17",
+#   "Statement": [
+#     {
+#       "Effect": "Allow",
+#       "Principal": {
+#         "Service": "s3.amazonaws.com"
+#       },
+#       "Action": "sts:AssumeRole"
+#     }
+#   ]
+# }
+# EOF
+# }
 

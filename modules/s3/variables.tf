@@ -1,4 +1,9 @@
 
+variable "region" {
+  description = "Aws Region"
+  type        = string
+}
+
 variable "s3_role_name" {
   description = "IAM role name to attach S3 policy"
 }
@@ -15,6 +20,11 @@ variable "s3_role_arn" {
 #   description = "List of GitHub files to copy to S3"
 #   type        = list(string)
 # }
+variable "alb_dns_name" {
+  description = "The DNS names of the ALB"
+  # type        = list(string)
+  # default     = []  # Set the default value as an empty list or provide your default values
+}
 
 variable "github_files_url" {
     description = "provide git hub url"
@@ -39,7 +49,7 @@ variable "acl_public_read" {
 variable "index_document_main" {
     description = "index.html is main file"
     default = "index.html"
-    type = string
+
 
   
 }
@@ -47,6 +57,4 @@ variable "index_document_main" {
 variable "error_document_main" {
     description = "error html file "
     default = "error.html"
-    type = string
-
 }

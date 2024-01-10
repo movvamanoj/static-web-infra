@@ -25,8 +25,8 @@ public_subnet_name_tag = "Public-Subnet-308-"
 #autoscaling
   asg_name            = "static-web-autoscaling-group"
   min_size            = 1
-  max_size            = 3
-  desired_capacity    = 2
+  max_size            = 1
+  desired_capacity    = 1
   launch_config_name  = "my-launch-configuration"
   tag_key             = "Environment"  
   tag_value           = "Production"   
@@ -53,11 +53,11 @@ health_check_unhealthy_threshold = 2
 github_files_url = "https://api.github.com/repos/movvamanoj/static-webhost/contents/"
     #  local_files_path = "path/to/local/files"
     #  github_files     = ["file1.txt", "file2.txt"] 
-bucket_name              = "test-terra"
+bucket_name              = "test-web-terra-1808"
 dynamodb_terraform_locks = "terraform-locks"
 terraform_tfstate_key = "terraform.tfstate"
 s3_terraform_state    = "s3-terraform-state-files"
-s3_bucket_name        = "terr-state-file-backup"
+s3_bucket_name        = "terr-state-file-backup-1808"
 
 #dynamodb
 
